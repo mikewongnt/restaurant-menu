@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ember &amp; Oak — Menu</title>
+  <meta name="description" content="Wood-fired Malaysian comfort food in Bangsar, Kuala Lumpur. Order dine-in, takeaway or delivery.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css?v=8">
+</head>
+<body class="storefront">
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" >
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21c4.2 0 7-2.9 7-6.7 0-3.4-2.3-5.4-4-7.5C13.5 4.9 12.6 3.3 12.4 1.5c-2.4 1.9-4.3 4.3-4.3 6.8 0 1.6.8 2.7 1.9 3.2.7.3 1.4 0 1.6-.7.2-.7 0-1.5-.4-2.2"/>
+            <path d="M8.5 21h7"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong id="brandName">Ember &amp; Oak</strong>
+          <small id="brandTagline">Wood-fired comfort food</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <span class="status-pill" id="statusPill"><span class="status-dot"></span>Open now</span>
+        <button class="btn btn-ghost header-orders" id="myOrdersBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ico" aria-hidden="true"><path d="M4 5h16v4a2 2 0 0 0 0 6v4H4v-4a2 2 0 0 0 0-6V5Z"/><path d="M9 9h6M9 13h4"/></svg>
+          My orders
+        </button>
+        <button class="btn btn-dark cart-btn" id="cartBtn" type="button" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="ico" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 3h2l2.3 12.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse-dot"></span><span id="heroStatus">Open for dine-in, takeaway &amp; delivery</span></p>
+        <h1>Wood-fired comfort,<br><em>made to order.</em></h1>
+        <p class="hero-sub">
+          Slow-smoked meats, wok-charred noodles and sambal made from scratch — cooked over
+          oak in Bangsar, Kuala Lumpur.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">Browse the menu</a>
+          <button class="btn btn-outline" id="heroOrdersBtn" type="button">Track an order</button>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>Prep time</dt><dd id="heroPrep">20–30 min</dd></div>
+          <div><dt>Dine-in</dt><dd>Table service</dd></div>
+          <div><dt>Takeaway</dt><dd>Free</dd></div>
+          <div><dt>Delivery</dt><dd id="heroFee">RM 5.00</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-photo thumb" data-emoji="🍚">
+          <img src="assets/img/hero-nasi-lemak.jpg"
+               alt="Nasi lemak with sambal, ikan bilis, peanuts, cucumber and egg" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-badge">
+          <span class="hero-star">★</span>
+          <div><strong>Nasi Lemak Wangi</strong><small>Most ordered this week</small></div>
+        </div>
+        <div class="hero-note">Bangsar · Kuala Lumpur</div>
+      </div>
+    </section>
+
+    <section class="menu-section container" id="menu">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The menu</p>
+          <h2>Something for every craving</h2>
+        </div>
+        <label class="search">
+          <span class="sr-only">Search the menu</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20.5 20.5-4-4"/></svg>
+          <input type="search" id="searchInput" placeholder="Search nasi lemak, laksa, kopi…" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="filter-bar">
+        <div class="chips" id="categoryChips" role="tablist" aria-label="Menu categories"></div>
+        <div class="toggles">
+          <label class="switch-line">
+            <input type="checkbox" id="vegOnly">
+            <span class="switch"></span>
+            Vegetarian
+          </label>
+          <label class="switch-line">
+            <input type="checkbox" id="hideSoldOut">
+            <span class="switch"></span>
+            Hide sold out
+          </label>
+        </div>
+      </div>
+
+      <div class="dish-grid" id="dishGrid"></div>
+
+      <div class="empty-state" id="menuEmpty" hidden>
+        <div class="empty-emoji">🍽️</div>
+        <h3>No dishes found</h3>
+        <p>Try a different search or clear your filters.</p>
+        <button class="btn btn-outline" id="clearFilters" type="button">Clear filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong id="footerName">Ember &amp; Oak</strong>
+        <p>Wood-fired comfort food, made to order.</p>
+      </div>
+      <div class="footer-meta">
+        <p id="footerHours">Open daily · 11:00 – 22:00</p>
+        <p id="footerContact">18 Jalan Telawi 3, Bangsar, 59100 Kuala Lumpur · +60 3-2201 8820</p>
+      </div>
+      <div class="footer-links">
+        <button class="link-btn" id="footerOrders" type="button">My orders</button>
+        <a class="link-btn" href="admin.html">Staff dashboard</a>
+      </div>
+    </div>
+    <div class="container footer-fine">
+      <p>Demo ordering — dine-in, takeaway and delivery orders are stored in your browser; no payment is processed.</p>
+    </div>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Your cart" aria-hidden="true" inert>
+    <div class="drawer-head">
+      <div>
+        <p class="eyebrow">Your order</p>
+        <h2>Cart</h2>
+      </div>
+      <button class="icon-btn" data-close-drawer type="button" aria-label="Close cart">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="cartLines"></div>
+    <div class="drawer-foot" id="cartFoot"></div>
+  </aside>
+
+  <script src="assets/js/store.js?v=8"></script>
+  <script src="assets/js/ui.js?v=9"></script>
+  <script src="assets/js/menu.js?v=9"></script>
+</body>
+</html>
